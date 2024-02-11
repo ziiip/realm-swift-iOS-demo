@@ -11,8 +11,8 @@ class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userLabel: UILabel!
     
-    
-    var closure: (() -> Void)?
+    var editClosure: (() -> Void)?
+    var deleteClosure: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +35,10 @@ class UserTableViewCell: UITableViewCell {
         userLabel.text = "\(fullName) is \(age) years old!"
     }
     
+    @IBAction func editBtn(_ sender: Any) {
+        editClosure?()
+    }
     @IBAction func deleteBtn(_ sender: Any) {
-        closure?()
+        deleteClosure?()
     }
 }

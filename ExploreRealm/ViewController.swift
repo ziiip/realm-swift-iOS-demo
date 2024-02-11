@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserTableViewCell")
-            
+        
         setupViews()
         readUsers()
     }
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         let padding: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         inputStack.layoutMargins = padding
         inputStack.isLayoutMarginsRelativeArrangement = true
-//        inputStack.backgroundColor = .lightGray
+        //        inputStack.backgroundColor = .lightGray
         inputStack.layer.cornerRadius = 10
         
         datePicker.maximumDate = Date()
@@ -63,8 +63,71 @@ class ViewController: UIViewController {
         let people = realm.objects(User.self)
         self.users = people.map({ $0 })
     }
+    
+    
+    func updateUser(_ user: User) {
+        // Create an alert controller
+        let alertController = UIAlertController(title: "Update User", message: nil, preferredStyle: .alert)
         
-    func deleteUser(user: User) {
+        // Add text fields
+        alertController.addTextField { textField in
+            textField.placeholder = "First Name"
+            textField.text = user.firstName // Display current value
+        }
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Last Name"
+            textField.text = user.lastName // Display current value
+        }
+        
+        // Add update button
+        let updateAction = UIAlertAction(title: "Update User", style: .default) { _ in
+            // Handle the update action here
+            if let firstNameTextField = alertController.textFields?.first,
+               let lastNameTextField = alertController.textFields?.last
+//               let age = Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: datePicker.date), to: Calendar.current.startOfDay(for: Date())).year
+            {
+                let firstName = firstNameTextField.text ?? ""
+                let lastName = lastNameTextField.text ?? ""
+                // Perform update based on name, and date picker values
+                do {
+                    let realm = try Realm()
+                    if let userToUpdate = realm.objects(User.self).filter("id == %@", user.id).first {
+                        try realm.write {
+                            userToUpdate.firstName = firstName
+                            userToUpdate.lastName = lastName
+//                            userToUpdate.age = age
+                        }
+                        print("updated data to: first Name \(user.firstName), last name \(user.lastName) and age is \(user.age)")
+                        self.readUsers()
+                        
+                        // With an alert to provide feedback
+                        let successAlert = UIAlertController(title: "Update Successful", message: "User information has been updated for \(user.firstName) \(user.lastName).", preferredStyle: .alert)
+                        successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                            self.readUsers()
+                        }))
+                        self.present(successAlert, animated: true, completion: nil)
+                    }
+                } catch {
+                    print("Error updating task: \(error)")
+                }
+                
+            }
+        }
+        
+        alertController.addAction(updateAction)
+        
+        // Add cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        // Present the alert
+        present(alertController, animated: true, completion: nil)
+    }
+    
+
+    
+    func deleteUser(_ user: User) {
         do {
             if let userToDelete = realm.objects(User.self).filter("id == %@", user.id).first {
                 try realm.write {

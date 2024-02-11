@@ -16,10 +16,15 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
         cell.populateData(user: users[indexPath.row])
-        cell.closure = { [weak self]  in
+        cell.editClosure = { [weak self]  in
             guard let self else { return }
             print(users[indexPath.item])
-            self.deleteUser(user: users[indexPath.item])
+            self.updateUser(users[indexPath.item])
+        }
+        cell.deleteClosure = { [weak self]  in
+            guard let self else { return }
+            print(users[indexPath.item])
+            self.deleteUser(users[indexPath.item])
         }
         return cell
     }

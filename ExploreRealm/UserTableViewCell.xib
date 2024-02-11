@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-lB-3d8">
-                        <rect key="frame" x="16" y="11.999999999999998" width="232" height="20.333333333333329"/>
+                        <rect key="frame" x="16" y="11.999999999999998" width="190" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,13 +35,28 @@
                             <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qsx-NO-7mb"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHR-Nh-7jh">
+                        <rect key="frame" x="222" y="4.6666666666666679" width="40" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="aqA-L5-6S8"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system">
+                            <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="editBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BJd-wC-6EU"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="EhN-lB-3d8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4K5-YX-7ig"/>
+                    <constraint firstItem="VHR-Nh-7jh" firstAttribute="leading" secondItem="EhN-lB-3d8" secondAttribute="trailing" constant="16" id="4OD-or-osS"/>
+                    <constraint firstItem="VHR-Nh-7jh" firstAttribute="centerY" secondItem="EhN-lB-3d8" secondAttribute="centerY" id="KUD-Mo-xvN"/>
                     <constraint firstAttribute="trailing" secondItem="lur-j7-oUz" secondAttribute="trailing" constant="16" id="gD2-xD-4A7"/>
                     <constraint firstItem="EhN-lB-3d8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="qV9-K7-1Bi"/>
                     <constraint firstItem="lur-j7-oUz" firstAttribute="centerY" secondItem="EhN-lB-3d8" secondAttribute="centerY" id="s96-PX-RSZ"/>
-                    <constraint firstItem="lur-j7-oUz" firstAttribute="leading" secondItem="EhN-lB-3d8" secondAttribute="trailing" constant="16" id="swb-UA-GMh"/>
+                    <constraint firstItem="lur-j7-oUz" firstAttribute="leading" secondItem="VHR-Nh-7jh" secondAttribute="trailing" constant="2" id="swb-UA-GMh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -52,7 +67,11 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="121"/>
         <image name="xmark.bin" catalog="system" width="128" height="92"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
