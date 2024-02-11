@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         datePicker.maximumDate = Date()
         
         saveBtn.layer.cornerRadius = 10
+        deleteAllBtn.layer.cornerRadius = 10
     }
     
     fileprivate func createUser(firstName: String, lastName: String, age: Int) {

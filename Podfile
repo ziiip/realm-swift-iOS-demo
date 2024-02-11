@@ -7,5 +7,6 @@ target 'ExploreRealm' do
 
   # Pods for ExploreRealm
   pod 'RealmSwift'
+  pod 'IQKeyboardManager'
 
 end
