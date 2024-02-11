@@ -14,6 +14,9 @@
 		FF58A6782B74EC8F0098C8B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58A6762B74EC8F0098C8B5 /* Main.storyboard */; };
 		FF58A67A2B74EC920098C8B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF58A6792B74EC920098C8B5 /* Assets.xcassets */; };
 		FF58A67D2B74EC920098C8B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF58A67B2B74EC920098C8B5 /* LaunchScreen.storyboard */; };
+		FFE8A93C2B789EDF00F0DB2A /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8A93B2B789EDF00F0DB2A /* ViewController+TableView.swift */; };
+		FFE8A9412B789F7100F0DB2A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE8A93F2B789F7100F0DB2A /* UserTableViewCell.swift */; };
+		FFE8A9422B789F7100F0DB2A /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE8A9402B789F7100F0DB2A /* UserTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FF58A6792B74EC920098C8B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF58A67C2B74EC920098C8B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF58A67E2B74EC920098C8B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFE8A93B2B789EDF00F0DB2A /* ViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TableView.swift"; sourceTree = "<group>"; };
+		FFE8A93F2B789F7100F0DB2A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		FFE8A9402B789F7100F0DB2A /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,6 @@
 				DBB64B8EB8BC0AC976F2C66D /* Pods-ExploreRealm.debug.xcconfig */,
 				C9078F504A39535230F01A56 /* Pods-ExploreRealm.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,6 +93,9 @@
 				FF58A6792B74EC920098C8B5 /* Assets.xcassets */,
 				FF58A67B2B74EC920098C8B5 /* LaunchScreen.storyboard */,
 				FF58A67E2B74EC920098C8B5 /* Info.plist */,
+				FFE8A93B2B789EDF00F0DB2A /* ViewController+TableView.swift */,
+				FFE8A93F2B789F7100F0DB2A /* UserTableViewCell.swift */,
+				FFE8A9402B789F7100F0DB2A /* UserTableViewCell.xib */,
 			);
 			path = ExploreRealm;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE8A9422B789F7100F0DB2A /* UserTableViewCell.xib in Resources */,
 				FF58A67D2B74EC920098C8B5 /* LaunchScreen.storyboard in Resources */,
 				FF58A67A2B74EC920098C8B5 /* Assets.xcassets in Resources */,
 				FF58A6782B74EC8F0098C8B5 /* Main.storyboard in Resources */,
@@ -209,7 +218,9 @@
 			files = (
 				FF58A6752B74EC8F0098C8B5 /* ViewController.swift in Sources */,
 				FF58A6712B74EC8F0098C8B5 /* AppDelegate.swift in Sources */,
+				FFE8A93C2B789EDF00F0DB2A /* ViewController+TableView.swift in Sources */,
 				FF58A6732B74EC8F0098C8B5 /* SceneDelegate.swift in Sources */,
+				FFE8A9412B789F7100F0DB2A /* UserTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +283,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -335,7 +346,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

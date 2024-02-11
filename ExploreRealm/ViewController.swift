@@ -10,12 +10,28 @@ import RealmSwift
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var inputStack: UIStackView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var users: [User] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     let realm = try! Realm()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserTableViewCell")
+        
         createUser(firstName: "Sajid", lastName: "Hasan", age: 23)
+        createUser(firstName: "Fuad", lastName: "Hasan", age: 54)
+        
+        readUsers()
     }
     
     fileprivate func createUser(firstName: String, lastName: String, age: Int) {
@@ -27,6 +43,16 @@ class ViewController: UIViewController {
         realm.beginWrite()
         realm.add(newUser)
         try! realm.commitWrite()
+    }
+    
+    fileprivate func readUsers() {
+        let people = realm.objects(User.self)
+        self.users = people.map({ $0 })
+    }
+        
+    fileprivate func deleteUser(userId: String) {
+        //TODO: delete user
+        print("delete")
     }
 }
 
