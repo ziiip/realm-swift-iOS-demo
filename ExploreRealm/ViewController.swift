@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var deleteAllBtn: UIButton!
     
     var users: [User] = [] {
         didSet {
@@ -85,7 +86,7 @@ class ViewController: UIViewController {
             // Handle the update action here
             if let firstNameTextField = alertController.textFields?.first,
                let lastNameTextField = alertController.textFields?.last
-//               let age = Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: datePicker.date), to: Calendar.current.startOfDay(for: Date())).year
+            //               let age = Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: datePicker.date), to: Calendar.current.startOfDay(for: Date())).year
             {
                 let firstName = firstNameTextField.text ?? ""
                 let lastName = lastNameTextField.text ?? ""
@@ -96,7 +97,7 @@ class ViewController: UIViewController {
                         try realm.write {
                             userToUpdate.firstName = firstName
                             userToUpdate.lastName = lastName
-//                            userToUpdate.age = age
+                            //                            userToUpdate.age = age
                         }
                         print("updated data to: first Name \(user.firstName), last name \(user.lastName) and age is \(user.age)")
                         self.readUsers()
@@ -125,7 +126,7 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-
+    
     
     func deleteUser(_ user: User) {
         do {
@@ -160,6 +161,36 @@ class ViewController: UIViewController {
         lastNameLabel.text = ""
         datePicker.date = Date()
     }
+    
+    @IBAction func deleteAllBtnPressed(_ sender: Any) {
+        let deleteAllAlert = UIAlertController(title: "Sure?", message: "Are you sure to delete all users!", preferredStyle: .alert)
+        deleteAllAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in
+            // delete all user
+            do {
+                try self.realm.write {
+                    
+                    // if I nee to delete every thing!
+                    //self.realm.deleteAll()
+                    
+                    //If delete only all user
+                    let usersToDelete = self.realm.objects(User.self)
+                    self.realm.deleteAll()
+                    
+                    print("All users deleted")
+                    self.readUsers()
+                }
+            } catch {
+                print("Error deleting all users: \(error)")
+            }
+        }))
+        
+        // Cancel Action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        deleteAllAlert.addAction(cancelAction)
+        
+        self.present(deleteAllAlert, animated: true, completion: nil)
+    }
+    
 }
 
 class User: Object {
