@@ -64,9 +64,18 @@ class ViewController: UIViewController {
         self.users = people.map({ $0 })
     }
         
-    fileprivate func deleteUser(userId: String) {
-        //TODO: delete user
-        print("delete")
+    func deleteUser(user: User) {
+        do {
+            if let userToDelete = realm.objects(User.self).filter("id == %@", user.id).first {
+                try realm.write {
+                    print("delete user: \(user.firstName)")
+                    realm.delete(userToDelete)
+                }
+                readUsers()
+            }
+        } catch {
+            print("Error deleting user \(user.firstName): \(error)")
+        }
     }
     
     @IBAction func saveBtnPressed(_ sender: UIButton) {

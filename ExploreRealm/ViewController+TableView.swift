@@ -19,6 +19,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         cell.closure = { [weak self]  in
             guard let self else { return }
             print(users[indexPath.item])
+            self.deleteUser(user: users[indexPath.item])
         }
         return cell
     }
