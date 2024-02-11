@@ -11,6 +11,10 @@ import RealmSwift
 class ViewController: UIViewController {
     
     @IBOutlet weak var inputStack: UIStackView!
+    @IBOutlet weak var firstNameLabel: UITextField!
+    @IBOutlet weak var lastNameLabel: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var users: [User] = [] {
@@ -27,11 +31,21 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserTableViewCell")
-        
-        createUser(firstName: "Sajid", lastName: "Hasan", age: 23)
-        createUser(firstName: "Fuad", lastName: "Hasan", age: 54)
-        
+            
+        setupViews()
         readUsers()
+    }
+    
+    fileprivate func setupViews() {
+        let padding: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        inputStack.layoutMargins = padding
+        inputStack.isLayoutMarginsRelativeArrangement = true
+//        inputStack.backgroundColor = .lightGray
+        inputStack.layer.cornerRadius = 10
+        
+        datePicker.maximumDate = Date()
+        
+        saveBtn.layer.cornerRadius = 10
     }
     
     fileprivate func createUser(firstName: String, lastName: String, age: Int) {
@@ -53,6 +67,26 @@ class ViewController: UIViewController {
     fileprivate func deleteUser(userId: String) {
         //TODO: delete user
         print("delete")
+    }
+    
+    @IBAction func saveBtnPressed(_ sender: UIButton) {
+        if let firstName = firstNameLabel.text,
+           let lastName = lastNameLabel.text,
+           let age = Calendar.current.dateComponents([.year], from: Calendar.current.startOfDay(for: datePicker.date), to: Calendar.current.startOfDay(for: Date())).year
+        {
+            createUser(firstName: firstName, lastName: lastName, age: age)
+            readUsers()
+            
+            resetInputFields()
+        } else {
+            print("Error in saving User!")
+        }
+    }
+    
+    func resetInputFields() {
+        firstNameLabel.text = ""
+        lastNameLabel.text = ""
+        datePicker.date = Date()
     }
 }
 
