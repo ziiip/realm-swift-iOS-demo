@@ -6,7 +6,7 @@ target 'ExploreRealm' do
   use_frameworks!
 
   # Pods for ExploreRealm
-  pod 'RealmSwift'
+  pod 'RealmSwift', '10.53.1'
   pod 'IQKeyboardManager'
 
 end

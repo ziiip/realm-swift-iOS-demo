@@ -1,0 +1,13 @@
+
+.DS_Store
+*.zip
+
+xcuserdata
+
+/build
+
+/Pods
+/Pods/build
+
+
+
