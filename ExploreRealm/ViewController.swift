@@ -330,7 +330,7 @@ class User: Object,Codable {
 
     @Persisted var companion: AnyRealmValue
 
-    @Persisted var position2d: PersistablePoint?
+    @Persisted var position2d: CGPoint?
     var tmpId = 0
 
     var name: String {
